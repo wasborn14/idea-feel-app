@@ -12,5 +12,5 @@ const Home: NextPage = () => {
 export default Home;
 
 const Container = styled.div`
-  color: red;
+  color: green;
 `;
