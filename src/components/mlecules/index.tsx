@@ -34,8 +34,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background-color: #202020;
-  color: white;
+  background-color: #f7f6f3;
   overflow: hidden;
 `;
 
@@ -56,11 +55,11 @@ const SideNav = styled.div<{ widthW: number }>`
 const MainContents = styled.div`
   display: flex;
   flex-grow: 1;
+  background-color: #ffffff;
 `;
 
 const ContentsTitle = styled.div`
   flex-grow: 1;
-  background-color: #202020;
   display: grid;
   place-items: center;
   transition: filter 0.2s ease-out, background-color 0.2s ease-out;

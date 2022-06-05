@@ -20,15 +20,18 @@ export default ResizeSplitter;
 
 const Container = styled.div`
   flex-shrink: 0;
-  width: 5px;
-  background-color: #d1d5db;
+  width: 8px;
+  background-color: #f7f6f3;
   cursor: col-resize;
   transition: background-color 0.15s 0.15s ease-in-out;
+
+  // TODO:こちらが動いていないため調整の必要あり
   .sample-drag-bar--dragging,
   .sample-drag-bar:hover {
-    background-color: #63b3ed;
+    background-color: black;
   }
 
+  // 水平方向時に使用する
   .sample-drag-bar.sample-drag-bar--horizontal {
     height: 5px;
     width: 100%;
