@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import { cn } from "src/utils/cn";
+import styled from "styled-components";
 
 const ResizeSplitter = ({ id = "drag-bar", dir, isDragging, ...props }: any) => {
   return (

@@ -1,16 +1,12 @@
 import type { NextPage } from "next";
-import styled from "styled-components";
+import Top from "src/components/pages/Top";
 
 const Index: NextPage = () => {
   return (
-    <Container>
-      <h1>test</h1>
-    </Container>
+    <>
+      <Top />
+    </>
   );
 };
 
 export default Index;
-
-const Container = styled.div`
-  color: green;
-`;
