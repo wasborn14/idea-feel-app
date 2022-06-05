@@ -5,7 +5,7 @@ import ResizeSplitter from "src/components/atoms/ResizeSplitter";
 const ResizeLayout = (): JSX.Element => {
   const {
     isDragging: isFileDragging,
-    position: fileW,
+    position: sideWidth,
     splitterProps: fileDragBarProps,
   } = useResizable({
     axis: "x",
@@ -16,9 +16,7 @@ const ResizeLayout = (): JSX.Element => {
   return (
     <Container>
       <LayoutWrapper>
-        <SideNav className={isFileDragging ? "dragging" : ""} widthW={fileW}>
-          File Tree
-        </SideNav>
+        <SideNav width={sideWidth}>File Tree</SideNav>
         <ResizeSplitter isDragging={isFileDragging} {...fileDragBarProps} />
         <MainContents>
           <ContentsTitle>Editor</ContentsTitle>
@@ -43,13 +41,13 @@ const LayoutWrapper = styled.div`
   flex-grow: 1;
 `;
 
-const SideNav = styled.div<{ widthW: number }>`
+const SideNav = styled.div<{ width: number }>`
   flex-shrink: 0;
   display: grid;
   place-items: center;
   transition: filter 0.2s ease-out, background-color 0.2s ease-out;
   font-size: 16px;
-  width: ${(props) => props.widthW}px;
+  width: ${(props) => props.width}px;
 `;
 
 const MainContents = styled.div`
