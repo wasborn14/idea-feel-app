@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import styled from "styled-components";
 
-const Home: NextPage = () => {
+const Index: NextPage = () => {
   return (
     <Container>
       <h1>test</h1>
@@ -9,7 +9,7 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default Index;
 
 const Container = styled.div`
   color: green;
