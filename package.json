@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "fmt": "prettier --write './**/*.{js,jsx,ts,tsx,json}'"
   },
   "dependencies": {
     "@types/styled-components": "^5.1.25",
