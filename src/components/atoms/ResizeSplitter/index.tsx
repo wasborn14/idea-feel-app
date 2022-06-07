@@ -20,8 +20,8 @@ export default ResizeSplitter;
 
 const Container = styled.div`
   flex-shrink: 0;
-  width: 8px;
-  background-color: #f7f6f3;
+  width: 2px;
+  background-color: #99681d;
   cursor: col-resize;
   transition: background-color 0.15s 0.15s ease-in-out;
 

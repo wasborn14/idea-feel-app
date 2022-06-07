@@ -1,8 +1,13 @@
 import { useResizable } from "react-resizable-layout";
 import styled from "styled-components";
 import ResizeSplitter from "src/components/atoms/ResizeSplitter";
+import { ReactNode } from "react";
 
-const ResizeLayout = (): JSX.Element => {
+interface Props {
+  children: ReactNode;
+}
+
+const ResizeLayout = ({ children }: Props): JSX.Element => {
   const {
     isDragging: isFileDragging,
     position: sideWidth,
@@ -18,9 +23,7 @@ const ResizeLayout = (): JSX.Element => {
       <LayoutWrapper>
         <SideNav width={sideWidth}>File Tree</SideNav>
         <ResizeSplitter isDragging={isFileDragging} {...fileDragBarProps} />
-        <MainContents>
-          <ContentsTitle>Editor</ContentsTitle>
-        </MainContents>
+        <MainContents>{children}</MainContents>
       </LayoutWrapper>
     </Container>
   );
@@ -32,7 +35,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background-color: #f7f6f3;
   overflow: hidden;
 `;
 
@@ -48,18 +50,12 @@ const SideNav = styled.div<{ width: number }>`
   transition: filter 0.2s ease-out, background-color 0.2s ease-out;
   font-size: 16px;
   width: ${(props) => props.width}px;
+  background-color: rgba(250, 200, 100, 0.2); // 元の色コードFAC864
 `;
 
 const MainContents = styled.div`
   display: flex;
   flex-grow: 1;
-  background-color: #ffffff;
-`;
-
-const ContentsTitle = styled.div`
-  flex-grow: 1;
-  display: grid;
-  place-items: center;
-  transition: filter 0.2s ease-out, background-color 0.2s ease-out;
-  font-size: 16px;
+  padding: 48px;
+  background-color: rgba(250, 200, 100, 0.2); // 元の色コードFAC864
 `;
