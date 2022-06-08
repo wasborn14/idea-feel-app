@@ -5,6 +5,17 @@ const Top = () => {
   return (
     <ResizeLayout>
       <MiddleSizeCard />
+      <MiddleSizeCard />
+      <MiddleSizeCard />
+      <MiddleSizeCard />
+      <MiddleSizeCard />
+      <MiddleSizeCard />
+      <MiddleSizeCard />
+      <MiddleSizeCard />
+      <MiddleSizeCard />
+      <MiddleSizeCard />
+      <MiddleSizeCard />
+      <MiddleSizeCard />
     </ResizeLayout>
   );
 };
