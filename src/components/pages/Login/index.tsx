@@ -1,8 +1,16 @@
+import { useRouter } from "next/router";
 import { Layout } from "src/components/templates/Layout";
 import { Color } from "src/const";
 import styled from "styled-components";
 
 const Login = () => {
+  const router = useRouter();
+  const onClick = () => {
+    router.push({
+      pathname: "/pc/top",
+    });
+  };
+
   return (
     <Layout meta={{ pageTitle: "Login" }}>
       <Container>
@@ -17,7 +25,7 @@ const Login = () => {
             <Input placeholder="password" />
           </InputWrapper>
           <ButtonWrapper>
-            <Button>Login</Button>
+            <Button onClick={onClick}>Login</Button>
           </ButtonWrapper>
         </MainContents>
       </Container>

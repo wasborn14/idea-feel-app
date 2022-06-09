@@ -59,7 +59,7 @@ const props2 = {
   ],
 };
 
-const Top = () => {
+export const Top = () => {
   return (
     <Layout meta={{ pageTitle: "Top" }}>
       <ResizeLayout>
@@ -79,5 +79,3 @@ const Top = () => {
     </Layout>
   );
 };
-
-export default Top;
