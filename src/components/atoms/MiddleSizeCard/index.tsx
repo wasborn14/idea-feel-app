@@ -4,38 +4,38 @@ import ContentsIcon from "../Icons/ContentsIcon";
 import { HStack } from "../Stack/HStack";
 import { VStack } from "../Stack/VStack";
 
-const MiddleSizeCard = () => {
+export type ClusterData = {
+  title: string;
+  titles?: ClusterData[];
+  isTitlesVisible?: boolean;
+};
+
+export type MiddleSizeCardProps = {
+  data: ClusterData;
+};
+
+const MiddleSizeCard = ({ data }: MiddleSizeCardProps) => {
   return (
     <Container>
       <VStack>
         <HStack spacing={12}>
           <ContentsIcon />
-          <Title>Mind</Title>
+          <Title>{data.title}</Title>
         </HStack>
         <ContentsContainer>
-          <Title1Container>
-            <Title1>Mind</Title1>
-            <Divider color="#b1221a" />
-            <Title2Container>
-              <Title2>Test</Title2>
-            </Title2Container>
-            <Title2Container>
-              <Title2>Test</Title2>
-            </Title2Container>
-            <Title2Container>
-              <Title2>Test</Title2>
-            </Title2Container>
-          </Title1Container>
-          <Title1Container>
-            <Title1>Mind</Title1>
-            <Divider color="#b1221a" />
-            <Title2Container>
-              <Title2>Test</Title2>
-            </Title2Container>
-            <Title2Container>
-              <Title2>Test</Title2>
-            </Title2Container>
-          </Title1Container>
+          {data.titles?.map((title1, index1) => (
+            <Title1Container key={`title-${index1}`}>
+              <Title1>{title1.title}</Title1>
+              <Divider color="#b1221a" />
+              <>
+                {title1.titles?.map((title2, index2) => (
+                  <Title2Container key={`title2-${index2}`}>
+                    <Title2>{title2.title}</Title2>
+                  </Title2Container>
+                ))}
+              </>
+            </Title1Container>
+          ))}
         </ContentsContainer>
       </VStack>
     </Container>
@@ -45,14 +45,15 @@ const MiddleSizeCard = () => {
 export default MiddleSizeCard;
 
 const Container = styled.div`
-  width: 450px;
-  height: 400px;
-  margin-top: 12px;
-  margin-left: 32px;
+  width: 350px;
+  margin: 12px 16px;
+  padding-bottom: 12px;
   border-radius: 18px;
-  /* border: solid; */
+
+  // 枠ありなしデザイン検討中
+  /* border: solid;
   border-width: 0.5px;
-  border-color: #99681d;
+  border-color: #99681d; */
 `;
 
 const Title = styled.h1`
@@ -62,7 +63,7 @@ const Title = styled.h1`
 `;
 
 const ContentsContainer = styled.div`
-  margin: 0px 32px;
+  margin: 0px 12px;
 `;
 
 const Title1 = styled.h2`

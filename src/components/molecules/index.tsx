@@ -57,6 +57,8 @@ const MainContents = styled.div`
   display: flex;
   flex-wrap: wrap;
   flex-grow: 1;
+  overflow-y: scroll;
+  height: 100vh;
   padding: 24px;
   background-color: rgba(250, 200, 100, 0.2); // 元の色コードFAC864
 `;
