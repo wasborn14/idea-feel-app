@@ -1,3 +1,4 @@
+import { Color } from "src/const";
 import styled from "styled-components";
 import Divider from "../Divider";
 import ContentsIcon from "../Icons/ContentsIcon";
@@ -57,7 +58,7 @@ const Container = styled.div`
 `;
 
 const Title = styled.h1`
-  color: #99681d;
+  color: ${Color.DARK_BROWN1};
   font-size: 28px;
   font-family: "Times New Roman", Times, serif;
 `;
@@ -67,7 +68,7 @@ const ContentsContainer = styled.div`
 `;
 
 const Title1 = styled.h2`
-  color: #b1221a;
+  color: ${Color.DARK_RED2};
   font-size: 24px;
   font-family: "Times New Roman", Times, serif;
 `;
@@ -81,7 +82,7 @@ const Title2Container = styled.div`
 `;
 
 const Title2 = styled.h2`
-  color: #492f08;
+  color: ${Color.DARK_BROWN2};
   font-size: 24px;
   font-family: "Times New Roman", Times, serif;
 `;

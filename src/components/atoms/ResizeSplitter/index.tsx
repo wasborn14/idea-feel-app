@@ -1,3 +1,4 @@
+import { Color } from "src/const";
 import { cn } from "src/utils/cn";
 import styled from "styled-components";
 
@@ -21,7 +22,7 @@ export default ResizeSplitter;
 const Container = styled.div`
   flex-shrink: 0;
   width: 2px;
-  background-color: #99681d;
+  background-color: ${Color.DARK_BROWN1};
   cursor: col-resize;
   transition: background-color 0.15s 0.15s ease-in-out;
 
