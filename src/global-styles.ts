@@ -47,6 +47,7 @@ export const GlobalStyles = createGlobalStyle`
       text-rendering: optimizeSpeed;
       line-height: 1.5;
       font-size: ${pxToRem(16)};
+      font-family: "Times New Roman", Times, serif;
   }
 
   a {

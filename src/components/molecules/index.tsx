@@ -2,6 +2,7 @@ import { useResizable } from "react-resizable-layout";
 import styled from "styled-components";
 import ResizeSplitter from "src/components/atoms/ResizeSplitter";
 import { ReactNode } from "react";
+import { Color } from "src/const";
 
 interface Props {
   children: ReactNode;
@@ -50,7 +51,7 @@ const SideNav = styled.div<{ width: number }>`
   transition: filter 0.2s ease-out, background-color 0.2s ease-out;
   font-size: 16px;
   width: ${(props) => props.width}px;
-  background-color: rgba(250, 200, 100, 0.2); // 元の色コードFAC864
+  background-color: ${Color.BACKGROUND_COLOR1};
 `;
 
 const MainContents = styled.div`
@@ -60,5 +61,5 @@ const MainContents = styled.div`
   overflow-y: scroll;
   height: 100vh;
   padding: 24px;
-  background-color: rgba(250, 200, 100, 0.2); // 元の色コードFAC864
+  background-color: ${Color.BACKGROUND_COLOR1};
 `;

@@ -70,7 +70,6 @@ const ContentsContainer = styled.div`
 const Title1 = styled.h2`
   color: ${Color.DARK_RED2};
   font-size: 24px;
-  font-family: "Times New Roman", Times, serif;
 `;
 
 const Title1Container = styled.div`
@@ -84,5 +83,4 @@ const Title2Container = styled.div`
 const Title2 = styled.h2`
   color: ${Color.DARK_BROWN2};
   font-size: 24px;
-  font-family: "Times New Roman", Times, serif;
 `;
