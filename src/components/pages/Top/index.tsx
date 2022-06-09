@@ -1,5 +1,6 @@
 import MiddleSizeCard from "src/components/atoms/MiddleSizeCard";
 import ResizeLayout from "src/components/molecules";
+import { Layout } from "src/components/templates/Layout";
 
 const props = {
   title: "Mind",
@@ -60,20 +61,22 @@ const props2 = {
 
 const Top = () => {
   return (
-    <ResizeLayout>
-      <MiddleSizeCard data={props} />
-      <MiddleSizeCard data={props2} />
-      <MiddleSizeCard data={props} />
-      <MiddleSizeCard data={props} />
-      <MiddleSizeCard data={props} />
-      <MiddleSizeCard data={props} />
-      <MiddleSizeCard data={props} />
-      <MiddleSizeCard data={props} />
-      <MiddleSizeCard data={props} />
-      <MiddleSizeCard data={props} />
-      <MiddleSizeCard data={props} />
-      <MiddleSizeCard data={props} />
-    </ResizeLayout>
+    <Layout meta={{ pageTitle: "Top" }}>
+      <ResizeLayout>
+        <MiddleSizeCard data={props} />
+        <MiddleSizeCard data={props2} />
+        <MiddleSizeCard data={props} />
+        <MiddleSizeCard data={props} />
+        <MiddleSizeCard data={props} />
+        <MiddleSizeCard data={props} />
+        <MiddleSizeCard data={props} />
+        <MiddleSizeCard data={props} />
+        <MiddleSizeCard data={props} />
+        <MiddleSizeCard data={props} />
+        <MiddleSizeCard data={props} />
+        <MiddleSizeCard data={props} />
+      </ResizeLayout>
+    </Layout>
   );
 };
 
