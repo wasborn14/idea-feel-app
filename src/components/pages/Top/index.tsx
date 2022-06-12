@@ -1,5 +1,6 @@
 import MiddleSizeCard from "src/components/atoms/MiddleSizeCard";
 import ResizeLayout from "src/components/molecules";
+import SideNav from "src/components/organisms/SideNav";
 import { Layout } from "src/components/templates/Layout";
 
 const props = {
@@ -62,7 +63,7 @@ const props2 = {
 export const Top = () => {
   return (
     <Layout meta={{ pageTitle: "Top" }}>
-      <ResizeLayout>
+      <ResizeLayout sideNavContents={<SideNav />}>
         <MiddleSizeCard data={props} />
         <MiddleSizeCard data={props2} />
         <MiddleSizeCard data={props} />

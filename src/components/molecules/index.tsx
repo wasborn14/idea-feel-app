@@ -5,10 +5,11 @@ import { ReactNode } from "react";
 import { Color } from "src/const";
 
 interface Props {
+  sideNavContents: ReactNode;
   children: ReactNode;
 }
 
-const ResizeLayout = ({ children }: Props): JSX.Element => {
+const ResizeLayout = ({ sideNavContents, children }: Props): JSX.Element => {
   const {
     isDragging: isFileDragging,
     position: sideWidth,
@@ -22,7 +23,7 @@ const ResizeLayout = ({ children }: Props): JSX.Element => {
   return (
     <Container>
       <LayoutWrapper>
-        <SideNav width={sideWidth}>File Tree</SideNav>
+        <SideNavWrapper width={sideWidth}>{sideNavContents}</SideNavWrapper>
         <ResizeSplitter isDragging={isFileDragging} {...fileDragBarProps} />
         <MainContents>{children}</MainContents>
       </LayoutWrapper>
@@ -44,14 +45,16 @@ const LayoutWrapper = styled.div`
   flex-grow: 1;
 `;
 
-const SideNav = styled.div<{ width: number }>`
+const SideNavWrapper = styled.div<{ width: number }>`
   flex-shrink: 0;
   display: grid;
-  place-items: center;
   transition: filter 0.2s ease-out, background-color 0.2s ease-out;
   font-size: 16px;
   width: ${(props) => props.width}px;
   background-color: ${Color.BACKGROUND_COLOR1};
+
+  // 元々あったものだが必要なければ削除する
+  /* place-items: center; */
 `;
 
 const MainContents = styled.div`
