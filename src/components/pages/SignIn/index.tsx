@@ -4,7 +4,7 @@ import { Layout } from "src/components/templates/Layout";
 import { Color } from "src/const";
 import styled from "styled-components";
 
-export const Login = () => {
+export const SignIn = () => {
   const router = useRouter();
   const onClick = () => {
     router.push({
@@ -13,11 +13,11 @@ export const Login = () => {
   };
 
   return (
-    <Layout meta={{ pageTitle: "Login" }}>
+    <Layout meta={{ pageTitle: "SignIn" }}>
       <Container>
         <MainContents>
           <TitleWrapper>
-            <Title>Login</Title>
+            <Title>SignIn</Title>
           </TitleWrapper>
           <InputWrapper>
             <Input placeholder="email" />
@@ -26,10 +26,10 @@ export const Login = () => {
             <Input placeholder="password" />
           </InputWrapper>
           <ButtonWrapper>
-            <Button onClick={onClick}>Login</Button>
+            <Button onClick={onClick}>SignIn</Button>
           </ButtonWrapper>
           <TextWrapper>
-            <Link href="/pc/signin" passHref>
+            <Link href="/pc/login" passHref>
               <Text>Create Account</Text>
             </Link>
           </TextWrapper>

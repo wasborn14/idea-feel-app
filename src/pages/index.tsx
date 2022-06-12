@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import Login from "src/components/pages/Login";
+import Login from "./pc/login";
 
 const Index: NextPage = () => {
   return (
