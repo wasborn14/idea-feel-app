@@ -1,39 +1,111 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useState } from "react";
 import { Layout } from "src/components/templates/Layout";
 import { Color } from "src/const";
 import styled from "styled-components";
+import Cookie from "universal-cookie";
+
+const cookie = new Cookie();
 
 export const SignIn = () => {
   const router = useRouter();
-  const onClick = () => {
-    router.push({
-      pathname: "/pc/top",
-    });
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const login = async () => {
+    try {
+      await fetch(`${process.env.NEXT_PUBLIC_IDEA_API_URL}api/auth/jwt/create/`, {
+        method: "POST",
+        body: JSON.stringify({ username: username, password: password }),
+        headers: {
+          "Content-type": "application/json",
+        },
+      })
+        .then((res) => {
+          console.log(res);
+          if (res.status === 400) {
+            throw "authentication failed";
+          } else if (res.ok) {
+            return res.json();
+          }
+        })
+        .then((data) => {
+          const options = { path: "/" };
+          console.log("data", data);
+          cookie.set("access_token", data.access, options);
+        });
+      router.push("/pc/main");
+    } catch (err) {
+      console.log(err);
+      alert(err);
+    }
+  };
+
+  const authUser = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      await fetch(`${process.env.NEXT_PUBLIC_IDEA_API_URL}api/register/`, {
+        method: "POST",
+        body: JSON.stringify({ username: username, password: password }),
+        headers: {
+          "Content-type": "application/json",
+        },
+      }).then((res) => {
+        if (res.status === 400) {
+          throw "authentication failed";
+        }
+      });
+      login();
+    } catch (err) {
+      alert(err);
+    }
   };
 
   return (
     <Layout meta={{ pageTitle: "SignIn" }}>
       <Container>
-        <MainContents>
-          <TitleWrapper>
-            <Title>SignIn</Title>
-          </TitleWrapper>
-          <InputWrapper>
-            <Input placeholder="email" />
-          </InputWrapper>
-          <InputWrapper>
-            <Input placeholder="password" />
-          </InputWrapper>
-          <ButtonWrapper>
-            <Button onClick={onClick}>SignIn</Button>
-          </ButtonWrapper>
-          <TextWrapper>
-            <Link href="/pc/login" passHref>
-              <Text>Create Account</Text>
-            </Link>
-          </TextWrapper>
-        </MainContents>
+        <form onSubmit={authUser}>
+          <MainContents>
+            <TitleWrapper>
+              <Title>SignIn</Title>
+            </TitleWrapper>
+            <InputWrapper>
+              <Input
+                name="username"
+                type="username"
+                autoComplete="username"
+                required
+                value={username}
+                onChange={(e) => {
+                  setUsername(e.target.value);
+                }}
+                placeholder="username"
+              />
+            </InputWrapper>
+            <InputWrapper>
+              <Input
+                name="password"
+                type="password"
+                autoComplete="current-password"
+                required
+                placeholder="Password"
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+              />
+            </InputWrapper>
+            <ButtonWrapper>
+              <Button>SignIn</Button>
+            </ButtonWrapper>
+            <TextWrapper>
+              <Link href="/pc/login" passHref>
+                <Text>Login</Text>
+              </Link>
+            </TextWrapper>
+          </MainContents>
+        </form>
       </Container>
     </Layout>
   );

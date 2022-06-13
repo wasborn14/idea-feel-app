@@ -1,10 +1,10 @@
 import type { NextPage } from "next";
-import Login from "./pc/login";
+import { InitialScreen } from "src/components/pages/InitialScreen";
 
 const Index: NextPage = () => {
   return (
     <>
-      <Login />
+      <InitialScreen />
     </>
   );
 };
