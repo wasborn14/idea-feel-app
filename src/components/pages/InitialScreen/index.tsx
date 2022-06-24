@@ -15,9 +15,9 @@ export const InitialScreen = () => {
 
   useEffect(() => {
     if (cookie.get("access_token")) {
-      router.push("pc/login");
-    } else {
       router.push("pc/top");
+    } else {
+      router.push("pc/login");
     }
   }, [router]);
 

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Layout } from "src/components/templates/Layout";
 import { Color } from "src/const";
 import styled from "styled-components";
@@ -13,8 +13,10 @@ export const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const login = async () => {
-    console.log("login");
+  const login = async (event: React.FormEvent<HTMLFormElement>) => {
+    // こちらを指定しないとfetchがcancelされる
+    event.preventDefault();
+
     try {
       await fetch(`${process.env.NEXT_PUBLIC_IDEA_API_URL}api/auth/jwt/create/`, {
         method: "POST",
@@ -24,7 +26,7 @@ export const Login = () => {
         },
       })
         .then((res) => {
-          console.log(res);
+          console.log("res:", res);
           if (res.status === 400) {
             throw "authentication failed";
           } else if (res.ok) {
@@ -33,24 +35,20 @@ export const Login = () => {
         })
         .then((data) => {
           const options = { path: "/" };
-          console.log("data", data);
+          console.log("data:", data);
           cookie.set("access_token", data.access, options);
         });
       router.push("/pc/top");
     } catch (err) {
-      console.log(err);
+      console.log("error:", err);
       alert(err);
     }
   };
 
-  useEffect(() => {
-    console.log(process.env.NEXT_PUBLIC_IDEA_API_URL);
-  }, []);
-
   return (
     <Layout meta={{ pageTitle: "Login" }}>
       <Container>
-        <form onSubmit={login}>
+        <form onSubmit={(event) => login(event)}>
           <MainContents>
             <TitleWrapper>
               <Title>Login</Title>
